@@ -1,9 +1,11 @@
-package ru.rychagov.rssclient;
+package ru.rychagov.rssclient.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import ru.rychagov.rssclient.R;
 
 public class SplashActivity extends Activity {
 

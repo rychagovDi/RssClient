@@ -1,7 +1,9 @@
-package ru.rychagov.rssclient;
+package ru.rychagov.rssclient.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import ru.rychagov.rssclient.R;
 
 public class MainActivity extends Activity {
 
