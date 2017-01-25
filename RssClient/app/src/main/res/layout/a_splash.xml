@@ -5,7 +5,7 @@
     android:id="@+id/a_splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.rychagov.rssclient.activities.SplashActivity">
+    tools:context="ru.rychagov.justrss.activities.SplashActivity">
 
     <ImageView
         android:layout_width="match_parent"

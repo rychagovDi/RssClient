@@ -1,4 +1,4 @@
-package ru.rychagov.rssclient;
+package ru.rychagov.justrss;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

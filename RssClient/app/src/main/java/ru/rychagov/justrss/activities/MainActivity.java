@@ -1,10 +1,10 @@
-package ru.rychagov.rssclient.activities;
+package ru.rychagov.justrss.activities;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
-import ru.rychagov.rssclient.R;
+import ru.rychagov.justrss.R;
 
 public class MainActivity extends Activity {
 

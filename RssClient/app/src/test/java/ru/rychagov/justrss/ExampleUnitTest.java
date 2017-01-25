@@ -1,4 +1,4 @@
-package ru.rychagov.rssclient;
+package ru.rychagov.justrss;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package ru.rychagov.rssclient.data;
+package ru.rychagov.justrss.data;
 
 public class RssStream {
 
