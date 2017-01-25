@@ -61,6 +61,11 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     }
   }
 
+  public void deleteRssStream(int _id) {
+    getWritableDatabase().delete(RssStreams.TABLE_NAME, RssStreams._ID + "=?", new String[]{"" + _id});
+    getWritableDatabase().delete(RssEntry.TABLE_NAME, RssEntry._ID + "=?", new String[]{"" + _id});
+  }
+
   public static class RssStreams implements BaseColumns {
     public static final String TABLE_NAME = "rss_streams";
     public static final String _ID = BaseColumns._ID;
