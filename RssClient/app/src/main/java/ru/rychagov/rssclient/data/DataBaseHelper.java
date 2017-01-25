@@ -1,9 +1,9 @@
 package ru.rychagov.rssclient.data;
 
 import android.content.Context;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
 
 public class DataBaseHelper  extends SQLiteOpenHelper {
 
@@ -17,10 +17,23 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
   @Override
   public void onCreate(SQLiteDatabase db) {
 
+    String SQL_CREATE_TABLE = "CREATE TABLE " + RssStreams.TABLE_NAME + " ("
+            + RssStreams._ID + " INTEGER NOT NULL, "
+            + RssStreams.RSS_TITLE + " TEXT NOT NULL, "
+            + RssStreams.RSS_LINK + " TEXT NOT NULL);";
+
+    db.execSQL(SQL_CREATE_TABLE);
   }
 
   @Override
   public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+  }
+
+  public static class RssStreams implements BaseColumns {
+    public static final String TABLE_NAME = "rss_streams";
+    public static final String _ID = BaseColumns._ID;
+    public static final String RSS_TITLE = "rss_title";
+    public static final String RSS_LINK = "rss_link";
   }
 }
