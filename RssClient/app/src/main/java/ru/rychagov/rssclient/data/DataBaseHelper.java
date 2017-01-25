@@ -1,6 +1,8 @@
 package ru.rychagov.rssclient.data;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
@@ -37,6 +39,26 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
   @Override
   public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+  }
+
+  public void addRssStream(String title, String link) {
+    Cursor cursor = getReadableDatabase().query(
+            RssStreams.TABLE_NAME,
+            new String[] {String.format("MAX(%s)", RssStreams._ID)},
+            null, null, null, null, null);
+
+    if (cursor != null) {
+      cursor.moveToFirst();
+      int max_ID = cursor.getInt(cursor.getColumnIndex(String.format("MAX(%s)", RssStreams._ID)));
+      cursor.close();
+
+      ContentValues values = new ContentValues();
+      values.put(RssStreams._ID, max_ID + 1);
+      values.put(RssStreams.COLUMN_RSS_TITLE, title);
+      values.put(RssStreams.COLUMN_RSS_LINK, link);
+
+      getWritableDatabase().insert(RssStreams.TABLE_NAME, null, values);
+    }
   }
 
   public static class RssStreams implements BaseColumns {
