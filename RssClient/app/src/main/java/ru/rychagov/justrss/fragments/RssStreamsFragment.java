@@ -40,7 +40,7 @@ public class RssStreamsFragment extends Fragment{
     recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-    return super.onCreateView(inflater, container, savedInstanceState);
+    return layout;
   }
 
   public void setUp(int fragmentID, DrawerLayout drawerLayout, final Toolbar toolbar) {
