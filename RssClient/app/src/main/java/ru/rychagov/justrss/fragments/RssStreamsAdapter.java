@@ -13,12 +13,17 @@ import java.util.ArrayList;
 import ru.rychagov.justrss.R;
 import ru.rychagov.justrss.data.RssStream;
 
-public class RssStreamsAdapter extends RecyclerView.Adapter<RssStreamsAdapter.RssStreamsViewHolder> {
+class RssStreamsAdapter extends RecyclerView.Adapter<RssStreamsAdapter.RssStreamsViewHolder> {
 
   private static final String TAG = "RssStreamsAdapter";
 
   private Context context;
   private ArrayList<RssStream> streams;
+
+  RssStreamsAdapter(Context context, ArrayList<RssStream> streams) {
+    this.context = context;
+    this.streams = streams;
+  }
 
   @Override
   public RssStreamsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -43,7 +48,7 @@ public class RssStreamsAdapter extends RecyclerView.Adapter<RssStreamsAdapter.Rs
     TextView title;
     OnItemClickListener listener = new OnItemClickListener();
 
-    public RssStreamsViewHolder(View itemView) {
+    RssStreamsViewHolder(View itemView) {
       super(itemView);
       title = (TextView) itemView.findViewById(R.id.nav_row_title);
       itemView.setOnClickListener(listener);
@@ -62,10 +67,10 @@ public class RssStreamsAdapter extends RecyclerView.Adapter<RssStreamsAdapter.Rs
       Log.d(TAG, String.format("link: %s, id: %d", link, id));
     }
 
-    public void setLink(String link) {
+    void setLink(String link) {
       this.link = link;
     }
-    public void setId(int id) {
+    void setId(int id) {
       this.id = id;
     }
   }
