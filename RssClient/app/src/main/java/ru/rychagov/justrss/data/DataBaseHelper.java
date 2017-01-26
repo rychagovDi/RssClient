@@ -41,31 +41,6 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
 
   }
 
-  public void addRssStream(String title, String link) {
-    Cursor cursor = getReadableDatabase().query(
-            RssStreams.TABLE_NAME,
-            new String[] {String.format("MAX(%s)", RssStreams._ID)},
-            null, null, null, null, null);
-
-    if (cursor != null) {
-      cursor.moveToFirst();
-      int max_ID = cursor.getInt(cursor.getColumnIndex(String.format("MAX(%s)", RssStreams._ID)));
-      cursor.close();
-
-      ContentValues values = new ContentValues();
-      values.put(RssStreams._ID, max_ID + 1);
-      values.put(RssStreams.COLUMN_RSS_TITLE, title);
-      values.put(RssStreams.COLUMN_RSS_LINK, link);
-
-      getWritableDatabase().insert(RssStreams.TABLE_NAME, null, values);
-    }
-  }
-
-  public void deleteRssStream(int _id) {
-    getWritableDatabase().delete(RssStreams.TABLE_NAME, RssStreams._ID + "=?", new String[]{"" + _id});
-    getWritableDatabase().delete(RssEntry.TABLE_NAME, RssEntry._ID + "=?", new String[]{"" + _id});
-  }
-
   public static class RssStreams implements BaseColumns {
     public static final String TABLE_NAME = "rss_streams";
     public static final String _ID = BaseColumns._ID;
