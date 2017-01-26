@@ -9,10 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import ru.rychagov.justrss.R;
-import ru.rychagov.justrss.data.DataBaseHelper;
-import ru.rychagov.justrss.data.RssStream;
 import ru.rychagov.justrss.fragments.RssStreamsFragment;
-import ru.rychagov.justrss.utils.RssStreamHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,12 +23,11 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.a_main);
 
     context = getApplicationContext();
+
     setToolbar("Test");
 
-    DataBaseHelper helper = new DataBaseHelper(context);
-    helper.addRssStream("Title", "Link");
     streamsFragment = (RssStreamsFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_nav_drawer);
-    streamsFragment.setUp(R.id.fragment_nav_drawer,(DrawerLayout)findViewById(R.id.a_main), toolbar);
+    streamsFragment.setUp(R.id.fragment_nav_drawer,(DrawerLayout)findViewById(R.id.a_drawer), toolbar);
   }
 
   @Override
