@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
   private void setToolbar(String title) {
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     toolbar.setTitle(title);
-    toolbar.setTitleTextColor(getResources().getColor(R.color.white_color));
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowHomeEnabled(true);
   }
