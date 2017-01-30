@@ -15,6 +15,8 @@ import java.util.Locale;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import ru.rychagov.justrss.data.Post;
+
 public class RssParser {
 
   public static ArrayList<Post> getRssItems(String feedUrl) {
