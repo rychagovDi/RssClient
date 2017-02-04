@@ -33,8 +33,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/nav_header"
         android:text="@string/empty"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:visibility="gone"/>
+        android:textStyle="italic"
+        android:gravity="center"/>
 
 </RelativeLayout>

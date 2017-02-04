@@ -11,8 +11,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import ru.rychagov.justrss.R;
+import ru.rychagov.justrss.data.RssStream;
 import ru.rychagov.justrss.utils.RssStreamHelper;
 
 public class RssStreamsFragment extends Fragment{
@@ -34,11 +38,21 @@ public class RssStreamsFragment extends Fragment{
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
     View layout = inflater.inflate(R.layout.f_navigation_drawer, container, false);
+
+    ArrayList<RssStream> streams = RssStreamHelper.getStreams(getContext());
+    TextView placeholder = (TextView) layout.findViewById(R.id.rss_streams_empty_placeholder);
     recyclerView = (RecyclerView) layout.findViewById(R.id.rss_streams_list);
 
-    adapter = new RssStreamsAdapter(getContext(), RssStreamHelper.getStreams(getContext()));
-    recyclerView.setAdapter(adapter);
-    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    if (streams.size() != 0) {
+      adapter = new RssStreamsAdapter(getContext(), streams);
+      recyclerView.setAdapter(adapter);
+      recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+      recyclerView.setVisibility(View.VISIBLE);
+      placeholder.setVisibility(View.GONE);
+    } else {
+      placeholder.setVisibility(View.VISIBLE);
+      recyclerView.setVisibility(View.GONE);
+    }
 
     return layout;
   }
