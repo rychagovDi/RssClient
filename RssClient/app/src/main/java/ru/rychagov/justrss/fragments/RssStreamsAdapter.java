@@ -1,7 +1,13 @@
 package ru.rychagov.justrss.fragments;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +40,12 @@ class RssStreamsAdapter extends RecyclerView.Adapter<RssStreamsAdapter.RssStream
   @Override
   public void onBindViewHolder(RssStreamsViewHolder holder, int position) {
     RssStream stream = streams.get(position);
-    holder.title.setText(stream.getTitle());
+
+    SpannableStringBuilder stringBuilder = new SpannableStringBuilder(stream.getTitle());
+    ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.rgb(153,0,0));
+    stringBuilder.setSpan(colorSpan, 0, 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+    holder.title.setText(stringBuilder);
+
     holder.listener.setLink(stream.getLink());
     holder.listener.setId(stream.getId());
   }
