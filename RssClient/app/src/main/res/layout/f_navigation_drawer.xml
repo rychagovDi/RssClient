@@ -23,8 +23,18 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rss_streams_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/nav_header"
         android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/rss_streams_empty_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/nav_header"
+        android:text="@string/empty"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:visibility="gone"/>
 
 </RelativeLayout>
